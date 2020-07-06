@@ -1,0 +1,90 @@
+﻿@model NetCore.Models.Book;
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="message"></div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="text-center mt-md-3">
+            <h2>Edit Book</h2>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-container">
+            <form asp-controller="Libro" asp-action="Edit" method="post" enctype="multipart/form-data">
+                <div class="text-danger border-info" asp-validation-summary="All"></div>
+                <div class="form-group text-center">
+                    <label asp-for="ISBN">ISBN</label>
+                    <input class="form-control" type="text" asp-for="ISBN" readonly />
+                </div>
+                <div class="form-group text-center">
+                    <label asp-for="Title">Titulo</label>
+                    <input class="form-control" type="text" asp-for="Title" />
+                </div>
+                <div class="form-group text-center">
+                    <label asp-for="Description">Descripcion</label>
+                    <textarea class="form-control" cols="10" rows="4" asp-for="Description"></textarea>
+                </div>
+                <div class="form-group text-center">
+                    <label asp-for="Genre">Genero</label>
+                    @Html.DropDownListFor(g => g.Genre, new SelectList(Enum.GetValues(typeof(Genero))), "Select a genre", new { @class = "form-control" })
+                </div>
+                <div class="form-group text-center">
+                    <label asp-for="Price">Precio</label>
+                    <input class="form-control" type="number" asp-for="Price" />
+                </div>
+                <div class="form-group text-center">
+                    <label asp-for="Amount">Cantidad</label>
+                    <input class="form-control" type="number" asp-for="Amount" />
+                </div>
+                <div class="form-group text-center">
+                    <label asp-for="Picture">Foto</label>
+                    <input class="form-control-file" name="picture" type="file" asp-for="Picture" />
+                    @if (ViewBag.PictureError != null)
+                    {
+                        <span class="text-danger">@ViewBag.PictureError</span>
+                    }
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@if (ViewBag.Resultado != null)
+{
+    @if (ViewBag.Resultado == true)
+    {
+        <script>
+            let message = document.querySelector(".message");
+            message.textContent = "Se editó el libro correctamente.";
+            message.classList = "message exito";
+            message.style = "display: block";
+            setTimeout(() => {
+                message.style = "display: none";
+                message.className = "message";
+            }, 3000);
+        </script>
+    }
+    else
+    {
+        <script>
+            let message = document.querySelector(".message");
+            message.textContent = "No se pudo editar el registro.";
+            message.classList = "message error";
+            message.style = "display: block";
+            setTimeout(() => {
+                message.style = "display: none";
+                message.className = "message";
+            }, 3000);
+        </script>
+    }
+}

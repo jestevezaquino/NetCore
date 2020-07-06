@@ -1,0 +1,57 @@
+﻿@model List<NetCore.Models.Book>;
+
+@{
+    ViewData["Title"] = "ShowBooks";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="text-center mt-md-3">
+            <h2>List of Books</h2>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered rounded">
+            <thead class="thead-dark text-center">
+                <tr>
+                    <th>ISBN</th>
+                    <th>Titulo</th>
+                    <th>Descripcion</th>
+                    <th>Genero</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Portada</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                @foreach(var libro in Model)
+                {
+                    <tr>
+                        <td>@libro.ISBN</td>
+                        <td>@libro.Title</td>
+                        <td>@libro.Description</td>
+                        <td>@libro.Genre</td>
+                        <td>@libro.Price</td>
+                        <td>@libro.Amount</td>
+                        <td>
+                            <img width="150" src="data:image;base64,@Convert.ToBase64String(libro.Picture)"/>
+                        </td>
+                        <td>
+                            <div class="d-inline-block">
+                                <a class="btn btn-warning" asp-controller="Libro" asp-action="Edit" asp-route-id="@libro.ISBN">Editar</a>
+                            </div>
+                            <div class="d-inline-block">
+                                <a class="btn btn-danger" asp-controller="Libro" asp-action="Delete" asp-route-id="@libro.ISBN">Eliminar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

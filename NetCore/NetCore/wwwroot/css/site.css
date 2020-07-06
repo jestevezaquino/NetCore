@@ -1,0 +1,100 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {    
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+.options {
+    margin: 0 auto 10px;
+    padding: 15px;
+    width: 500px;
+    border-radius: 0.5rem;
+    background-color: #0094ff;
+    box-shadow: 0 5px 10px -1px #808080;
+}
+
+[class$="s2"] {
+    background-color: #ff6a00;
+}
+
+.option-item {
+    color: #ffffff;
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+.option-item:hover{
+    text-decoration: none;
+}
+
+.form-container {
+    margin: 0 auto;
+    padding: 15px;
+    width: 400px;
+    border: 0.1em solid #b200ff;
+    border-radius: 0.8rem;
+}
+
+.exito {
+    margin: 10px auto;
+    padding: 15px;
+    width: 500px;
+    background: #3eed37;
+    color: #ffffff;
+    font-size: 1.5em;
+    text-align: center;
+    border-radius: 0.8rem;
+}
+
+.error {
+    margin: 10px auto;
+    padding: 15px;
+    width: 500px;
+    background: #fb2929;
+    color: #ffffff;
+    font-size: 1.5em;
+    text-align: center;
+    border-radius: 0.8rem;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
